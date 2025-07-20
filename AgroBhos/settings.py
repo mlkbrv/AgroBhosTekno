@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-mfd86yyd70g^5jt7=zozex8aw)!-s19(9g0qfnhowz27k0jhwe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.70']
+# ALLOWED_HOSTS = ['192.168.1.70']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
