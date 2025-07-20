@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8000/users/token/
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "admin"
+}
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMDI0Njc2LCJpYXQiOjE3NTMwMjQzNzYsImp0aSI6IjFhYTQxMDU5NzI5YzRmYzA4ZTFjNWNhMTIwNGE2NDJkIiwidXNlcl9pZCI6MX0.oOfww2vL6Z1rUnvl9I6C3EF85rhWGdvOsPGZB0HvW04

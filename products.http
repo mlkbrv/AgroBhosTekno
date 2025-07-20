@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8000/api/categories/
+Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMDI0Njc2LCJpYXQiOjE3NTMwMjQzNzYsImp0aSI6IjFhYTQxMDU5NzI5YzRmYzA4ZTFjNWNhMTIwNGE2NDJkIiwidXNlcl9pZCI6MX0.oOfww2vL6Z1rUnvl9I6C3EF85rhWGdvOsPGZB0HvW04
+Content-Type: application/json
+
+{
+  "name": "Vegetables"
+}
