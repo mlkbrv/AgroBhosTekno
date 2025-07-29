@@ -27,7 +27,25 @@ class UserRegisterView(generics.CreateAPIView):
         },status=status.HTTP_201_CREATED)
 
 class CustomTokenObtainPairView(TokenObtainPairView):
-    pass
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        # Получаем пользователя из валидированных данных
+        user = serializer.user
+        
+        response = super().post(request, *args, **kwargs)
+        if response.status_code == 200:
+            # Добавляем информацию о пользователе в ответ
+            response.data['user'] = {
+                'id': user.id,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'is_business_owner': user.is_business_owner,
+                'date_joined': user.date_joined.isoformat(),
+            }
+        return response
 
 class ProfileView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()

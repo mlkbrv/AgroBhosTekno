@@ -4,6 +4,9 @@ from users.models import User
 class CropCategory(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -13,6 +16,10 @@ class Farm(models.Model):
     image = models.ImageField(upload_to='farms/', null=True, blank=True)
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     address = models.TextField(null=False   , blank=False)
+    
+    class Meta:
+        ordering = ['name']
+    
     def __str__(self):
         return self.name
 
@@ -25,6 +32,10 @@ class Crop(models.Model):
     stock = models.IntegerField(null=False,blank=False)
     predicted_yield = models.FloatField(null=True,blank=True)
     price = models.FloatField(null=True,blank=True)
+    
+    class Meta:
+        ordering = ['name']
+    
     @property
     def in_stock(self):
         return self.stock > 0
@@ -41,6 +52,9 @@ class Item(models.Model):
     stock = models.IntegerField(null=False, blank=False)
     price = models.FloatField(null=True, blank=True)
     is_new = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['name']
 
     @property
     def in_stock(self):
@@ -59,6 +73,9 @@ class Machinery(models.Model):
     stock = models.IntegerField(null=False, blank=False)
     price = models.FloatField(null=True, blank=True)
     is_new = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['name']
 
     @property
     def in_stock(self):

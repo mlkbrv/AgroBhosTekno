@@ -3,11 +3,9 @@ from users.models import User
 from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
-    full_name = serializers.CharField(source='get_full_name', read_only=True)
-
     class Meta:
         model = User
-        fields = ('id', 'email', 'full_name')
+        fields = ('id', 'email', 'first_name', 'last_name')
 
 class FarmShortSerializer(serializers.ModelSerializer):
     class Meta:
@@ -95,10 +93,17 @@ class MachinerySerializer(serializers.ModelSerializer):
 
 class AllProductsSerializer(serializers.Serializer):
     def to_representation(self, instance):
+        data = {}
         if isinstance(instance, Crop):
-            return CropSerializer(instance, context=self.context).data
-        if isinstance(instance, Item):
-            return ItemSerializer(instance, context=self.context).data
-        if isinstance(instance, Machinery):
-            return MachinerySerializer(instance, context=self.context).data
-        raise TypeError('Unexpected object type')
+            data = CropSerializer(instance, context=self.context).data
+            data['type'] = 'crop'
+        elif isinstance(instance, Item):
+            data = ItemSerializer(instance, context=self.context).data
+            data['type'] = 'item'
+        elif isinstance(instance, Machinery):
+            data = MachinerySerializer(instance, context=self.context).data
+            data['type'] = 'machinery'
+        else:
+            raise TypeError('Unexpected object type')
+        
+        return data

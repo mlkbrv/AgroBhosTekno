@@ -22,7 +22,12 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return f'Order {self.order_id} by {self.user.username}'
+        return f'Order {self.order_id} by {self.user.get_full_name()}'
+    
+    @property
+    def items(self):
+        """Возвращает связанные элементы заказа"""
+        return self.orderitem_set.all()
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -37,4 +42,4 @@ class OrderItem(models.Model):
         return self.quantity * self.product.price
 
     def __str__(self):
-        return f"{self.quantity} x {self.product} in Order {self.order.id}"
+        return f"{self.quantity} x {self.product} in Order {self.order.order_id}"
