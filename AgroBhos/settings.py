@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'orders.apps.OrdersConfig',
+    'map.apps.MapConfig',
 ]
 
 MIDDLEWARE = [
