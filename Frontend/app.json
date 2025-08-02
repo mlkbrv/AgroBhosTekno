@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "AgroBhos",
+    "name": "agrobhos-frontend",
     "slug": "agrobhos-frontend",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,11 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "Это приложение использует камеру для фотографирования продуктов",
-        "NSPhotoLibraryUsageDescription": "Это приложение использует галерею для выбора изображений продуктов"
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -27,13 +23,20 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
       ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 } 

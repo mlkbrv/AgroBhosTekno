@@ -42,4 +42,11 @@ export const businessAPI = {
   deleteCrop: (id) => api.delete(`/api/crops/${id}/delete/`),
   deleteItem: (id) => api.delete(`/api/items/${id}/delete/`),
   deleteMachinery: (id) => api.delete(`/api/machinery/${id}/delete/`),
-}; 
+};
+
+// Локации ферм
+export const getLocations = (token) => api.get('/locations/', {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+}); 

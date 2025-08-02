@@ -21,6 +21,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import AddProductScreen from '../screens/AddProductScreen';
 import ManageFarmProductsScreen from '../screens/ManageFarmProductsScreen';
 import EditProductScreen from '../screens/EditProductScreen';
+import MapScreen from '../screens/MapScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -48,6 +49,32 @@ const FarmsStack = () => (
     <Stack.Screen 
       name="FarmsList" 
       component={FarmsScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen 
+      name="FarmDetail" 
+      component={FarmDetailScreen}
+      options={{ 
+        title: 'Детали фермы',
+        headerBackTitle: 'Назад'
+      }}
+    />
+    <Stack.Screen 
+      name="FarmProducts" 
+      component={FarmProductsScreen}
+      options={{ 
+        title: 'Продукты фермы',
+        headerBackTitle: 'Назад'
+      }}
+    />
+  </Stack.Navigator>
+);
+
+const MapStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen 
+      name="MapMain" 
+      component={MapScreen}
       options={{ headerShown: false }}
     />
     <Stack.Screen 
@@ -136,6 +163,8 @@ const MainTabs = () => (
           iconName = focused ? '🍎' : '🍎';
         } else if (route.name === 'Farms') {
           iconName = focused ? '🏡' : '🏡';
+        } else if (route.name === 'Map') {
+          iconName = focused ? '🗺️' : '🗺️';
         } else if (route.name === 'Cart') {
           iconName = focused ? '🛒' : '🛒';
         } else if (route.name === 'Orders') {
@@ -168,6 +197,11 @@ const MainTabs = () => (
       name="Farms" 
       component={FarmsStack}
       options={{ title: 'Фермы' }}
+    />
+    <Tab.Screen 
+      name="Map" 
+      component={MapStack}
+      options={{ title: 'Карта' }}
     />
     <Tab.Screen 
       name="Cart" 
