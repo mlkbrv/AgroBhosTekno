@@ -197,3 +197,4 @@ CORS_ALLOWED_HEADERS = [
     'x-requested-with',
 ]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
